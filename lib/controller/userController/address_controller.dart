@@ -26,8 +26,6 @@ class AddressController extends GetxController {
     changeDeliveryAddress(id: address.id);
     getAddress();
     addressList.refresh();
-    update();
-    refresh();
 
     debugPrint("\naddress stored: $addressList");
   }
@@ -51,7 +49,7 @@ class AddressController extends GetxController {
 
       getAddress();
       addressList.refresh();
-      update();
+      
       refresh();
     }
   }
@@ -97,6 +95,6 @@ class AddressController extends GetxController {
     debugPrint("\nselected Address: ${selectedAddress.value}");
 
     selectedAddress.refresh();
-    update();
+   
   }
 }
