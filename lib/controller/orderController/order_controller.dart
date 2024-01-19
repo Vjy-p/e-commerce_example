@@ -14,25 +14,24 @@ class OrderController extends GetxController {
   void onInit() {
     getData();
     super.onInit();
-    refresh();
-    update();
+    
   }
 
   getData() async {
     isLoading(true);
-    isLoading.refresh();
+    
     var orderDB = await Hive.openBox<HiveOrderModel>(orderStore);
     orderProducts = RxList.from(orderDB.values);
     debugPrint("\nordersLenght ${orderProducts.length}");
     isLoading(false);
-    isLoading.refresh();
+    
     refresh();
-    update();
+   
   }
 
   addOrder(HiveOrderModel product) async {
     isLoading(true);
-    isLoading.refresh();
+    
     var orderDB = await Hive.openBox<HiveOrderModel>(orderStore);
 
     if (orderDB.containsKey(product.orderID)) {
@@ -41,19 +40,16 @@ class OrderController extends GetxController {
       orderDB.put(product.orderID.toString(), product);
       getData();
       isLoading(false);
-      isLoading.refresh();
-      refresh();
-      update();
+      
       debugPrint("\norder added $product");
     }
     isLoading(false);
-    isLoading.refresh();
+   
     final cartController = Get.put(CartController());
     cartController.deleteCart();
     cartController.getData();
 
     refresh();
-    update();
   }
 
   updateOrder({required HiveOrderModel order}) async {
@@ -66,9 +62,7 @@ class OrderController extends GetxController {
     orderDB.put(order.orderID.toString(), order);
 
     isLoading(false);
-    isLoading.refresh();
-
-    update();
+   
     refresh();
   }
 
