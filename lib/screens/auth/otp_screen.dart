@@ -16,20 +16,20 @@ import 'package:firebase_testing/utils/customToast.dart';
 import 'package:firebase_testing/utils/custom_loading.dart';
 import 'package:firebase_testing/utils/custom_text.dart';
 
-class VerifyPhoneNumberScreen extends StatefulWidget {
+class OTPScreen extends StatefulWidget {
   final String phoneNumber;
 
-  const VerifyPhoneNumberScreen({
+  const OTPScreen({
     Key? key,
     required this.phoneNumber,
   }) : super(key: key);
 
   @override
-  State<VerifyPhoneNumberScreen> createState() =>
-      _VerifyPhoneNumberScreenState();
+  State<OTPScreen> createState() =>
+      _OTPScreenState();
 }
 
-class _VerifyPhoneNumberScreenState extends State<VerifyPhoneNumberScreen>
+class _OTPScreenState extends State<OTPScreen>
     with WidgetsBindingObserver {
   bool isKeyboardVisible = false;
 
