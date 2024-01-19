@@ -65,9 +65,6 @@ class UserController extends GetxController {
     notificationCount++;
     userDB.put('notificationCount', notificationCount);
 
-    refresh();
-    update();
-
     debugPrint("\nnotifications count $notificationCount");
   }
 
@@ -90,7 +87,6 @@ class UserController extends GetxController {
     }
 
     deliveryID.refresh();
-    update();
 
     return deliveryID.value;
   }
