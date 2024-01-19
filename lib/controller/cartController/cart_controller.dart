@@ -25,9 +25,9 @@ class CartController extends GetxController {
     cartProducts = cartDB.values.toList();
     count();
     isLoading(false);
-  
+
     refresh();
-    update();
+  
   }
 
   addToCart(HiveCartModel product) async {
