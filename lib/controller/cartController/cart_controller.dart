@@ -16,26 +16,23 @@ class CartController extends GetxController {
   void onInit() {
     getData();
     super.onInit();
-
-    refresh();
-    update();
   }
 
   getData() async {
     isLoading(true);
-    isLoading.refresh();
+   
     var cartDB = await Hive.openBox<HiveCartModel>(cartStore);
     cartProducts = cartDB.values.toList();
     count();
     isLoading(false);
-    isLoading.refresh();
+  
     refresh();
     update();
   }
 
   addToCart(HiveCartModel product) async {
     isLoading(true);
-    isLoading.refresh();
+   
     var cartDB = await Hive.openBox<HiveCartModel>(cartStore);
     if (cartDB.containsKey(product.id.toString())) {
       updateToCart(product);
@@ -45,14 +42,11 @@ class CartController extends GetxController {
       cartDB.put(product.id.toString(), product);
 
       isLoading(false);
-      isLoading.refresh();
 
-      refresh();
-      update();
       debugPrint("\nproduct added $product");
     }
     isLoading(false);
-    isLoading.refresh();
+
   }
 
   count() {
@@ -65,15 +59,14 @@ class CartController extends GetxController {
     if (Get.put(CouponController()).couponapplied.value) {
       totalPrice.value -= Get.put(CouponController()).discountedPrice.value;
     }
-    totalPrice.refresh();
-    totalCount.refresh();
+    
 
     debugPrint("\ntotal price: $totalPrice");
   }
 
   updateToCart(HiveCartModel product) async {
     isLoading(true);
-    isLoading.refresh();
+   
     var cartDB = await Hive.openBox<HiveCartModel>(cartStore);
 
     if (product.quantity <= 0) {
@@ -85,7 +78,7 @@ class CartController extends GetxController {
       cartDB.delete(product.id.toString());
 
       refresh();
-      update();
+     
       debugPrint("\nupdated : ${cartProducts}");
     } else {
       int index =
@@ -96,12 +89,12 @@ class CartController extends GetxController {
       cartDB.put(product.id.toString(), product);
 
       refresh();
-      update();
+      
       debugPrint("\nupdated : ${cartProducts.length}");
     }
 
     isLoading(false);
-    isLoading.refresh();
+   
   }
 
   deleteCart() async {
@@ -113,7 +106,7 @@ class CartController extends GetxController {
     cartProducts.clear();
 
     refresh();
-    update();
+  
     debugPrint("\ndeleted : ${cartProducts.length}");
   }
 }
