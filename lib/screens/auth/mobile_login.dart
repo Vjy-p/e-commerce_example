@@ -77,7 +77,7 @@ class _MobileLoginState extends State<MobileLogin> {
       //     builder: (context) => VerifyPhoneNumberScreen(
       //         phoneNumber: "+91${numberController.text}")));
       Get.off(
-          VerifyPhoneNumberScreen(phoneNumber: "+91${numberController.text}"));
+          OTPScreen(phoneNumber: "+91${numberController.text}"));
     }
   }
 }
