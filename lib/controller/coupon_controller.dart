@@ -45,7 +45,7 @@ class CouponController extends GetxController {
     couponCode.refresh();
     validate(Get.put(CartController()).totalPrice.value);
     refresh();
-    update();
+   
   }
 
   // getCoupon() async {
@@ -62,13 +62,11 @@ class CouponController extends GetxController {
     if (min == null) {
       errorText.value = "Not Valid Coupon";
 
-      refresh();
-      update();
+      
     } else if (amount < min.minAmount) {
       errorText.value = 'Amount Should be Greater Than ${min.minAmount}';
 
-      refresh();
-      update();
+      
     } else {
       if (min.couponType.toLowerCase() == 'flat') {
         discountedPrice.value = min.flatAmount!;
@@ -76,7 +74,7 @@ class CouponController extends GetxController {
         discountedPrice.refresh();
         Get.put(CartController()).count();
         refresh();
-        update();
+       
         debugPrint("\nflat amount : ${discountedPrice.value}");
       } else {
         int n = ((min.percentage! * amount) / 100).round();
@@ -85,20 +83,18 @@ class CouponController extends GetxController {
           discountedPrice.refresh();
           Get.put(CartController()).count();
           refresh();
-          update();
+          
           debugPrint("\ndiscount amount : ${discountedPrice.value}");
         } else {
           discountedPrice.value = n;
           discountedPrice.refresh();
           Get.put(CartController()).count();
           refresh();
-          update();
+          
           debugPrint("\ndiscount amount : ${discountedPrice.value}");
         }
       }
 
-      refresh();
-      update();
     }
   }
 
@@ -110,6 +106,6 @@ class CouponController extends GetxController {
     Get.put(CartController()).count();
     errorText.refresh();
     refresh();
-    update();
+    
   }
 }
